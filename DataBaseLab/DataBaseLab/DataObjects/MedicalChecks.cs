@@ -7,6 +7,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DataBaseLab.DataObjects
 {
+    [Table("MedicalChecksBase")]
     public class MedicalChecks
     {
         [Key]

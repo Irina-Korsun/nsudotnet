@@ -7,7 +7,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DataBaseLab.DataObjects
 {
-    class ArivalAirport
+    [Table("ArivalAirportsBase")]
+    public class ArivalAirports
     {
         [Key]
         public long ID { get; set; }

@@ -186,11 +186,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\TodoItemController.cs" />
-    <Compile Include="DataObjects\ActualFlight.cs" />
+    <Compile Include="DataObjects\ActualFlights.cs" />
     <Compile Include="DataObjects\AircfaftTypes.cs" />
     <Compile Include="DataObjects\Aircrafts.cs" />
-    <Compile Include="DataObjects\ArivalAirport.cs" />
+    <Compile Include="DataObjects\ArivalAirports.cs" />
     <Compile Include="DataObjects\Brigades.cs" />
     <Compile Include="DataObjects\Childs.cs" />
     <Compile Include="DataObjects\Departments.cs" />
@@ -221,6 +220,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Controllers\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

@@ -29,7 +29,7 @@ namespace DataBaseLab
 
     public class MobileServiceInitializer : DropCreateDatabaseIfModelChanges<MobileServiceContext>
     {
-        protected override void Seed(MobileServiceContext context)
+        /*protected override void Seed(MobileServiceContext context)
         {
             List<TodoItem> todoItems = new List<TodoItem>
             {
@@ -43,7 +43,7 @@ namespace DataBaseLab
             }
 
             base.Seed(context);
-        }
+        }*/
     }
 }
 
