@@ -187,12 +187,21 @@
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\TodoItemController.cs" />
+    <Compile Include="DataObjects\ActualFlight.cs" />
+    <Compile Include="DataObjects\AircfaftTypes.cs" />
+    <Compile Include="DataObjects\Aircrafts.cs" />
+    <Compile Include="DataObjects\ArivalAirport.cs" />
     <Compile Include="DataObjects\Brigades.cs" />
     <Compile Include="DataObjects\Childs.cs" />
     <Compile Include="DataObjects\Departments.cs" />
     <Compile Include="DataObjects\Employees.cs" />
+    <Compile Include="DataObjects\FlightCategories.cs" />
+    <Compile Include="DataObjects\Flights.cs" />
+    <Compile Include="DataObjects\FlightStatuses.cs" />
     <Compile Include="DataObjects\MedicalChecks.cs" />
     <Compile Include="DataObjects\Positions.cs" />
+    <Compile Include="DataObjects\Schedule.cs" />
+    <Compile Include="DataObjects\TechChecks.cs" />
     <Compile Include="Models\MobileServiceContext.cs" />
     <Compile Include="ScheduledJobs\SampleJob.cs" />
     <Compile Include="Global.asax.cs">
