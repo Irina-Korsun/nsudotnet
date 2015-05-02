@@ -18,6 +18,6 @@ namespace DataBaseLab.DataObjects
         public int ChildRefId { get; set; }
 
         [ForeignKey("ChildRefId")]
-        public virtual Employees Employee  { get; set; }
+        public virtual Employees Parent  { get; set; }
     }
 }

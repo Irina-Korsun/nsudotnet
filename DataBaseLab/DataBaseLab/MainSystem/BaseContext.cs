@@ -30,7 +30,7 @@ namespace DataBaseLab.MainSystem
         {
             //Configure domain classes using Fluent API here
             modelBuilder.Entity<Childs>()
-                       .HasRequired<Employees>(s => s.Employee)
+                       .HasRequired<Employees>(s => s.Parent)
                        .WithMany(s => s.Children)
                        .HasForeignKey(s => s.ID);
         }
