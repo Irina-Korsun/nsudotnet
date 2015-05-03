@@ -186,6 +186,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\StubController.cs" />
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="DataObjects\ActualFlights.cs" />
     <Compile Include="DataObjects\AircfaftTypes.cs" />

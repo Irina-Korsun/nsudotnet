@@ -6,6 +6,7 @@ using System.Web.Http;
 using DataBaseLab.DataObjects;
 using DataBaseLab.Models;
 using Microsoft.WindowsAzure.Mobile.Service;
+using DataBaseLab.MainSystem;
 
 namespace DataBaseLab
 {
@@ -19,31 +20,22 @@ namespace DataBaseLab
             // Use this class to set WebAPI configuration options
             HttpConfiguration config = ServiceConfig.Initialize(new ConfigBuilder(options));
 
+            config.Formatters.Remove(config.Formatters.XmlFormatter);
             // To display errors in the browser during development, uncomment the following
             // line. Comment it out again when you deploy your service for production use.
             // config.IncludeErrorDetailPolicy = IncludeErrorDetailPolicy.Always;
 
-            Database.SetInitializer(new MobileServiceInitializer());
+            Database.SetInitializer(new ContexBaseInitializer<BaseContext>());
+
         }
     }
 
-    public class MobileServiceInitializer : DropCreateDatabaseIfModelChanges<MobileServiceContext>
+    public class ContexBaseInitializer<T> : DropCreateDatabaseIfModelChanges<T> where T : DbContext, new()
     {
-        /*protected override void Seed(MobileServiceContext context)
+        protected override void Seed(T context)
         {
-            List<TodoItem> todoItems = new List<TodoItem>
-            {
-                new TodoItem { Id = Guid.NewGuid().ToString(), Text = "First item", Complete = false },
-                new TodoItem { Id = Guid.NewGuid().ToString(), Text = "Second item", Complete = false },
-            };
-
-            foreach (TodoItem todoItem in todoItems)
-            {
-                context.Set<TodoItem>().Add(todoItem);
-            }
-
             base.Seed(context);
-        }*/
+        }
     }
 }
 
