@@ -7,13 +7,11 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DataBaseLab.DataObjects
 {
-    [Table("AircraftsBase")]
-    public class Aircrafts
+    [Table("AircraftTypesBase")]
+    public class AircraftTypes
     {
         [Key]
         public long ID { get; set; }
-        public AircraftTypes AircraftType { get; set; }
-        public TechChecks TechCheck { get; set; }
-        public int NumberOfFlights { get; set; }
+        public string Name { get; set; }
     }
 }

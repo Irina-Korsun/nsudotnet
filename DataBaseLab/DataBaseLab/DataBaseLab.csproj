@@ -126,6 +126,7 @@
     <Reference Include="RazorEngine">
       <HintPath>..\packages\RazorEngine.3.4.1\lib\net45\RazorEngine.dll</HintPath>
     </Reference>
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.IdentityModel.Tokens.Jwt">
       <HintPath>..\packages\System.IdentityModel.Tokens.Jwt.3.0.2\lib\net45\System.IdentityModel.Tokens.Jwt.dll</HintPath>
     </Reference>
@@ -189,7 +190,7 @@
     <Compile Include="Controllers\StubController.cs" />
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="DataObjects\ActualFlights.cs" />
-    <Compile Include="DataObjects\AircfaftTypes.cs" />
+    <Compile Include="DataObjects\AircraftTypes.cs" />
     <Compile Include="DataObjects\Aircrafts.cs" />
     <Compile Include="DataObjects\ArivalAirports.cs" />
     <Compile Include="DataObjects\Brigades.cs" />
@@ -204,7 +205,6 @@
     <Compile Include="DataObjects\Schedule.cs" />
     <Compile Include="DataObjects\TechChecks.cs" />
     <Compile Include="MainSystem\BaseContext.cs" />
-    <Compile Include="Models\MobileServiceContext.cs" />
     <Compile Include="ScheduledJobs\SampleJob.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -223,6 +223,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
