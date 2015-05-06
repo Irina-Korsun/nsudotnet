@@ -15,9 +15,9 @@ namespace DataBaseLab.DataObjects
         public string Name { get; set; }
         public string SurName { get; set; }
 
-        public int ChildRefId { get; set; }
+        public long ParentRefId { get; set; }
 
-        [ForeignKey("ChildRefId")]
+        [ForeignKey("ParentRefId")]
         public virtual Employees Parent  { get; set; }
     }
 }

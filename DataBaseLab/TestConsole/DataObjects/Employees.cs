@@ -13,6 +13,7 @@ namespace DataBaseLab.DataObjects
         [Key]
         public long ID { get; set; }
         public Positions Position { get; set; }
+        [Required]
         public Departments Department { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }

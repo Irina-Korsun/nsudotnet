@@ -2,6 +2,8 @@
 using System.Linq;
 using DataBaseLab.MainSystem;
 using DataBaseLab.DataObjects;
+using System.Data.SqlClient;
+using System.Configuration;
 
 namespace TestConsole
 {
@@ -17,53 +19,69 @@ namespace TestConsole
         private void Start()
         {
             this.context = new BaseContext();
-            Drop();
+            context.Database.Delete();
             context.SaveChanges();
-
+            Console.WriteLine("The Data Base was Dropped");
+            AddDataToDataBase();
+            Console.WriteLine("Data added");
+            
+        }
+        private void AddDataToDataBase()
+        {    
             CreateAircraftTypes();
             CreateArivalAirports();
             CreateFlightCategories();
             CreateFlightStatuses();
-            CreatePositions();
             CreateTechChecks();
+            CreateAircrafts();
+            CreateFlights();
+            CreateActualFlights();
+            CreateSchedule();
 
-            context.SaveChanges();
-                        
-            //CreateAircrafts();
-            //CreateFlights();
-            //CreateActualFlights();
-            //var t = context.AircraftTypesBase.Local.Single(s => s.Name == "Boing777") as AircraftTypes;
+            CreatePositions();
+            CreateBrigades();
+            CreateDepartments();
         }
-        private void Drop()
+        private void DropTables()
         {
+            Drop("[BrigadesBase]");
+            Drop("[PositionsBase]");
+            Drop("dbo.ActualFlightsBase");
+            Drop("dbo.FlightsBase");
+            Drop("dbo.AircraftsBase");
+            Drop("dbo.TechChecksBase");
+            Drop("dbo.FlightStatusesBase");
+            Drop("dbo.FlightCategoriesBase");
+            Drop("dbo.ArivalAirportsBase");
+            Drop("dbo.AircraftTypesBase");            
+        }
+        private void Drop(string TableName)
+        {
+            bool TableExists = false;
+            var connectionString = ConfigurationManager.ConnectionStrings["DBConnetionString"].ConnectionString;
 
-            foreach (var entity in context.AircraftTypesBase)
-                context.AircraftTypesBase.Remove(entity);
+            using (SqlConnection con = new SqlConnection(connectionString))
+            using (SqlCommand cmd = con.CreateCommand())
+            {
+                cmd.CommandText = "SELECT COUNT (*) FROM DataBaseLab";
+                con.Open();
+                if ((int)cmd.ExecuteScalar() > 0)
+                    TableExists = true;
+                else
+                    TableExists = false;
+            }
+            if (TableExists == true)
+            {
+                using (SqlConnection con = new SqlConnection(connectionString))
+                using (SqlCommand cmd = con.CreateCommand())
+                {
+                    cmd.CommandText = "DROP TABLE " + TableName;
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                }
+            }
 
-            foreach (var entity in context.ArivalAirportsBase)
-                context.ArivalAirportsBase.Remove(entity);
-
-            foreach (var entity in context.AircraftsBase)
-                context.AircraftsBase.Remove(entity);
-
-            foreach (var entity in context.BrigadesBase)
-                context.BrigadesBase.Remove(entity);
-
-            foreach (var entity in context.FlightCategoriesBase)
-                context.FlightCategoriesBase.Remove(entity);
-
-            foreach (var entity in context.FlightsBase)
-                context.FlightsBase.Remove(entity);
-
-            foreach (var entity in context.FlightStatusesBase)
-                context.FlightStatusesBase.Remove(entity);
-
-            foreach (var entity in context.PositionsBase)
-                context.PositionsBase.Remove(entity);
-
-            foreach (var entity in context.TechChecksBase)
-                context.TechChecksBase.Remove(entity);
-
+             
         }
         private void CreateAircraftTypes()
         {
@@ -73,6 +91,7 @@ namespace TestConsole
             CreateAircraftTypes("SU37");
             CreateAircraftTypes("Aerobus");
             CreateAircraftTypes("Boing-DreamFly");
+            context.SaveChanges();
         }
         private void CreateAircraftTypes(string Name)
         {
@@ -85,6 +104,11 @@ namespace TestConsole
             CreateArivalAirports("Vnukovo", "Russia", "Moskow");
             CreateArivalAirports("Tolmachevo", "Russia", "Novosibirsk");
             CreateArivalAirports("Manchester", "USA", "Manchester");
+            CreateArivalAirports("Brisbane", "Australia", "Brisbane");
+            CreateArivalAirports("Darwin", "Australia", "Darwin");
+            CreateArivalAirports("Duboo City", "Australia", "Duboo");
+            CreateArivalAirports("Melbourne", "Australia", "Melbourne");
+            context.SaveChanges();
         }
         private void CreateArivalAirports(string Name, string Country, string Town)
         {
@@ -93,9 +117,12 @@ namespace TestConsole
         }
         private void CreateBrigades()
         {
-            CreateBrigades("Brigade1");
-            CreateBrigades("Brigade2");
-            CreateBrigades("Brigade3");
+            CreateBrigades("Brigade 1");
+            CreateBrigades("Brigade 2");
+            CreateBrigades("Brigade 3");
+            CreateBrigades("Brigade 4");
+            CreateBrigades("Brigade 5");
+            CreateBrigades("Brigade 6");
 
         }
         private void CreateBrigades(string Name)
@@ -109,6 +136,9 @@ namespace TestConsole
         {
             CreateFlightCategories("Passengers");
             CreateFlightCategories("Post");
+            CreateFlightCategories("Regular");
+            CreateFlightCategories("Not Regular");
+            context.SaveChanges();
 
         }
         private void CreateFlightCategories(string Type)
@@ -123,6 +153,8 @@ namespace TestConsole
             CreateFlightStatuses("Canceled");
             CreateFlightStatuses("Ready");
             CreateFlightStatuses("Delayed");
+            CreateFlightStatuses("Boarding");
+            context.SaveChanges();
 
         }
         private void CreateFlightStatuses(string Type)
@@ -132,25 +164,14 @@ namespace TestConsole
                 Type = Type
             });
         }
-        private void CreatePositions()
-        {
-            CreatePositions("HRManager", 1);
-            CreatePositions("Dispetcher", 2);
-            CreatePositions("Programmer", 1);
-        }
-        private void CreatePositions(string Name, int MedicCheckPeriod)
-        {
-            context.PositionsBase.Add(new Positions()
-            {
-                Name = Name,
-                MedicCheckPeriod = MedicCheckPeriod
-            });
-        }
+
         private void CreateTechChecks()
         {
             CreateTechChecks(true);
             CreateTechChecks(false);
             CreateTechChecks(true);
+            CreateTechChecks(true);
+            context.SaveChanges();
         }
         private void CreateTechChecks(bool MustBeFixed)
         {
@@ -166,6 +187,8 @@ namespace TestConsole
             CreateAircrafts("Boing777", 1);
             CreateAircrafts("Boing666", 2);
             CreateAircrafts("TU", 3);
+            CreateAircrafts("SU37", 4);
+            context.SaveChanges();
         }
         private void CreateAircrafts(string AircraftType, long ID)
         {
@@ -182,6 +205,10 @@ namespace TestConsole
         {
             CreateFlights("Passengers", "Domodedovo");
             CreateFlights("Post", "Domodedovo");
+            CreateFlights("Post", "Manchester");
+            CreateFlights("Regular", "Brisbane");
+            CreateFlights("Regular", "Duboo City");
+            context.SaveChanges();
         }
         private void CreateFlights(string Category, string Route)
         {
@@ -196,9 +223,17 @@ namespace TestConsole
         }
         private void CreateActualFlights()
         {
-            var a = context.AircraftsBase.Single(s => s.ID == 1) as Aircrafts;
-            var f = context.FlightsBase.Single(s => s.ID == 1) as Flights;
-            var b = context.FlightStatusesBase.Single(s => s.ID == 1) as FlightStatuses;
+            CreateActualFlights(1, 1, 1);
+            CreateActualFlights(2, 1, 1);
+            CreateActualFlights(3, 2, 2);
+            CreateActualFlights(4, 2, 1);
+            context.SaveChanges();
+        }
+        private void CreateActualFlights(int AircraftID, int FlightiD, int FlightStatusID)
+        {
+            var a = context.AircraftsBase.Single(s => s.ID == AircraftID) as Aircrafts;
+            var f = context.FlightsBase.Single(s => s.ID == FlightiD) as Flights;
+            var b = context.FlightStatusesBase.Single(s => s.ID == FlightStatusID) as FlightStatuses;
             context.ActualFlightsBase.Add(new ActualFlights
             {
                 Flight = f,
@@ -211,5 +246,59 @@ namespace TestConsole
                 ArivalDateTime = DateTime.Now
             });
         }
+        private void CreatePositions()
+        {
+            CreatePositions("HRManager", 1);
+            CreatePositions("Dispetcher", 2);
+            CreatePositions("Programmer", 1);
+            CreatePositions("Doctor", 4);
+            CreatePositions("Teacher", 3);
+            context.SaveChanges();
+        }
+        private void CreatePositions(string Name, int MedicCheckPeriod)
+        {
+            context.PositionsBase.Add(new Positions()
+            {
+                Name = Name,
+                MedicCheckPeriod = MedicCheckPeriod
+            });
+        }
+        private void CreateSchedule()
+        {
+            CreateSchedule(1, 1, 2000);
+            CreateSchedule(1, 2, 3000);
+            CreateSchedule(2, 3, 100);
+            CreateSchedule(2, 4, 100);
+            context.SaveChanges();
+        }
+         private void CreateSchedule(int AircraftTypeID, int FlightID, int Price){
+             var a = context.AircraftTypesBase.Single(s => s.ID == AircraftTypeID) as AircraftTypes;
+             var f = context.FlightsBase.Single(s => s.ID == FlightID) as Flights;
+             context.ScheduleBase.Add(new Schedule
+             {
+                 AircraftType = a,
+                 Flight = f,
+                 DepartureDateTime = DateTime.Now,
+                 ArivalDateTime = DateTime.Now,
+                 Price = Price
+             });
+        }
+         private void CreateDepartments()
+         {
+             CreateDepartments("HRDepartment");
+             CreateDepartments("ProgramDepartment");
+             CreateDepartments("EvilDepartment");
+             CreateDepartments("ChocolateDepartment");
+             context.SaveChanges();
+         }
+         private void CreateDepartments(string Name)
+         {
+             context.DepartmentsBase.Add(new Departments
+             {
+                 Name = Name,
+                 Chief = null
+             });
+         }
     }
+
 }
