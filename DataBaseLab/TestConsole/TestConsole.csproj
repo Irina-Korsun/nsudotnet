@@ -52,21 +52,34 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataObjects\ActualFlights.cs" />
-    <Compile Include="DataObjects\Aircrafts.cs" />
-    <Compile Include="DataObjects\AircraftTypes.cs" />
-    <Compile Include="DataObjects\ArivalAirports.cs" />
-    <Compile Include="DataObjects\Brigades.cs" />
-    <Compile Include="DataObjects\Childs.cs" />
-    <Compile Include="DataObjects\Departments.cs" />
-    <Compile Include="DataObjects\Employees.cs" />
-    <Compile Include="DataObjects\FlightCategories.cs" />
-    <Compile Include="DataObjects\Flights.cs" />
-    <Compile Include="DataObjects\FlightStatuses.cs" />
-    <Compile Include="DataObjects\MedicalChecks.cs" />
-    <Compile Include="DataObjects\Positions.cs" />
-    <Compile Include="DataObjects\Schedule.cs" />
-    <Compile Include="DataObjects\TechChecks.cs" />
+    <Compile Include="DataObjects\ActualFlightsBase\ActualFlights.cs" />
+    <Compile Include="DataObjects\ActualFlightsBase\ActualFlightsAdding.cs" />
+    <Compile Include="DataObjects\AircraftsBase\Aircrafts.cs" />
+    <Compile Include="DataObjects\AircraftsBase\AircraftsAdding.cs" />
+    <Compile Include="DataObjects\AircraftTypesBase\AircraftTypes.cs" />
+    <Compile Include="DataObjects\AircraftTypesBase\AircraftTypesAdding.cs" />
+    <Compile Include="DataObjects\ArivalAirportsBase\ArivalAirports.cs" />
+    <Compile Include="DataObjects\ArivalAirportsBase\ArivalAirportsAdding.cs" />
+    <Compile Include="DataObjects\BrigadesBase\Brigades.cs" />
+    <Compile Include="DataObjects\BrigadesBase\BrigadesAdding.cs" />
+    <Compile Include="DataObjects\DepartmentsBase\DepartmentsAdding.cs" />
+    <Compile Include="DataObjects\EmployeesAndChildsBase\Childs.cs" />
+    <Compile Include="DataObjects\DepartmentsBase\Departments.cs" />
+    <Compile Include="DataObjects\EmployeesAndChildsBase\Employees.cs" />
+    <Compile Include="DataObjects\EmployeesAndChildsBase\EmployeesAndChildrensAdding.cs" />
+    <Compile Include="DataObjects\FlightCategoriesBase\FlightCategories.cs" />
+    <Compile Include="DataObjects\FlightCategoriesBase\FlightCategoriesAdding.cs" />
+    <Compile Include="DataObjects\FlightsBase\FlightAdding.cs" />
+    <Compile Include="DataObjects\FlightStatusesBase\FlightStatusesAdding.cs" />
+    <Compile Include="DataObjects\FlightsBase\Flights.cs" />
+    <Compile Include="DataObjects\FlightStatusesBase\FlightStatuses.cs" />
+    <Compile Include="DataObjects\MedicalChecks\MedicalChecks.cs" />
+    <Compile Include="DataObjects\PositionsBase\Positions.cs" />
+    <Compile Include="DataObjects\PositionsBase\PositionsAdding.cs" />
+    <Compile Include="DataObjects\ScheduleBase\Schedule.cs" />
+    <Compile Include="DataObjects\ScheduleBase\ScheduleAdding.cs" />
+    <Compile Include="DataObjects\TechChecksBase\TechChecks.cs" />
+    <Compile Include="DataObjects\TechChecksBase\TechChecksAdding.cs" />
     <Compile Include="MainSystem\BaseContext.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -78,6 +91,7 @@
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
