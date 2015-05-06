@@ -44,32 +44,32 @@ namespace TestConsole
         }
         private void AddDataToDataBase()
         {
-            var a = new AircraftTypesAdding();
-            a.CreateAircraftTypes();
-            var b = new ArivalAirportsAdding();
-            b.CreateArivalAirports();
-            var c = new FlightCategoriesAdding();
-            c.CreateFlightCategories();
-            var d = new FlightStatusesAdding();
-            d.CreateFlightStatuses();
-            var f = new TechChecksAdding();
-            f.CreateTechChecks();
-            var t = new AircraftsAdding();
-            t.CreateAircrafts();
-            var q = new FlightAdding();
-            q.CreateFlights();
-            var y = new ActualFlightsAdding();
-            y.CreateActualFlights();
-            var o = new ScheduleAdding();
-            o.CreateSchedule();
-            var x = new PositionsAdding();
-            x.CreatePositions();
-            var z = new BrigadesAdding();
-            z.CreateBrigades();
-            var w = new DepartmentsAdding();
-            w.CreateDepartments();
-            var j = new EmployeesAndChildrensAdding();
-            j.CreateEmployeesAndChildrens();
+            var aircraftTypes = new AircraftTypesAdding();
+            aircraftTypes.CreateAircraftTypes();
+            var arivalAirports = new ArivalAirportsAdding();
+            arivalAirports.CreateArivalAirports();
+            var flightCategories = new FlightCategoriesAdding();
+            flightCategories.CreateFlightCategories();
+            var flightStatuses = new FlightStatusesAdding();
+            flightStatuses.CreateFlightStatuses();
+            var techChecks = new TechChecksAdding();
+            techChecks.CreateTechChecks();
+            var aircrafts = new AircraftsAdding();
+            aircrafts.CreateAircrafts();
+            var flights = new FlightAdding();
+            flights.CreateFlights();
+            var actualFlights = new ActualFlightsAdding();
+            actualFlights.CreateActualFlights();
+            var schedule = new ScheduleAdding();
+            schedule.CreateSchedule();
+            var positions = new PositionsAdding();
+            positions.CreatePositions();
+            var brigades = new BrigadesAdding();
+            brigades.CreateBrigades();
+            var departments = new DepartmentsAdding();
+            departments.CreateDepartments();
+            var employeesAndChilds = new EmployeesAndChildrensAdding();
+            employeesAndChilds.CreateEmployeesAndChildrens();
         }
     }
 }
