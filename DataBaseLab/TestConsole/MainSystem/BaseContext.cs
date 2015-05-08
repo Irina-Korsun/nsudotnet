@@ -33,6 +33,10 @@ namespace DataBaseLab.MainSystem
                        .HasMany<Childs>(s=>s.Children)
                        .WithRequired(s=>s.Parent)
                        .HasForeignKey(s => s.ParentRefId);
+            modelBuilder.Entity<Departments>()
+                      .HasMany<Employees>(s => s.Employees)
+                      .WithRequired(s => s.Department)
+                      .HasForeignKey(s => s.DepartmentRefId);
         }
     }
 }

@@ -18,10 +18,10 @@ namespace TestConsole.DataObjects.EmployeesAndChildsBase
         }
          public void CreateEmployeesAndChildrens()
          {
-             CreateEmployeesAndChildrens(1, 1, 1, 10000, "Mihail", true, "Reas", "Lesha");
-             CreateEmployeesAndChildrens(1, 2, 2, 20000, "Tolya", true, "Trex", "Ilya");
-             CreateEmployeesAndChildrens(2, 3, 1, 10000, "Mitya", true, "Wert", "Irina");
-             CreateEmployeesAndChildrens(3, 3, 4, 20000, "Tolya", true, "Sart", "Nastya");
+             CreateEmployeesAndChildrens(4, 3, 5, 20000, "Andrey", true, "Sa", "Nasty");
+             CreateEmployeesAndChildrens(2, 3, 2, 20000, "Ghj", true, "VVV", "I");
+             CreateEmployeesAndChildrens(4, 1, 2, 10000, "VBN", true, "We", "I");
+             CreateEmployeesAndChildrens(1, 2, 3, 20000, "LKH", true, "SSD", "Na");
              context.SaveChanges();
          }
          private void CreateEmployeesAndChildrens(int PositionID, int DepartmentID, int BrigadeID, int Salary,

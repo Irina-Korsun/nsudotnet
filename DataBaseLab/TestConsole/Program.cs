@@ -18,8 +18,9 @@ using TestConsole.DataObjects.PositionsBase;
 using TestConsole.DataObjects.BrigadesBase;
 using TestConsole.DataObjects.DepartmentsBase;
 using TestConsole.DataObjects.EmployeesAndChildsBase;
-
-
+using TestConsole.Sql;
+using System.Text;
+using System.IO;
 
 namespace TestConsole
 {
@@ -40,7 +41,14 @@ namespace TestConsole
             Console.WriteLine("The Data Base was Dropped");
             AddDataToDataBase();
             Console.WriteLine("Data added");
-            
+
+            FirstEmployeesRequests req = new FirstEmployeesRequests();
+            Console.WriteLine("Получить список и общее число всех pаботников аэpопоpта");
+            req.EmployeesListRequest();
+            Console.WriteLine("Получить список и общее число всех начальников отделов");
+            req.ChiefListRequest();
+            Console.WriteLine("Получить список и число pаботников указанного отдела");
+            Console.ReadKey();
         }
         private void AddDataToDataBase()
         {
@@ -68,8 +76,14 @@ namespace TestConsole
             brigades.CreateBrigades();
             var departments = new DepartmentsAdding();
             departments.CreateDepartments();
-            var employeesAndChilds = new EmployeesAndChildrensAdding();
-            employeesAndChilds.CreateEmployeesAndChildrens();
+            departments.AddChiefsToDepartments();
+            //var employeesAndChilds = new EmployeesAndChildrensAdding();
+            //employeesAndChilds.CreateEmployeesAndChildrens();
         }
+        private void PrintRequestList()
+        {
+            string[] lines = File.ReadAllLines("req.txt");
+        }
+
     }
 }

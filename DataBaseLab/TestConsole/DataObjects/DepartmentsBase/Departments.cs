@@ -14,5 +14,6 @@ namespace DataBaseLab.DataObjects
         public long ID { get; set; }
         public string Name { get; set; }
         public Employees Chief { get; set; }
+        public List<Employees> Employees { get; set; }
     }
 }
