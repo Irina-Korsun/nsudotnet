@@ -23,6 +23,25 @@ namespace TestConsole.Sql
              Show(t);
              Console.WriteLine(t.Count);
          }
+        //Получить список работников указанного отдела
+         public void EmployeesOfDepartmentRequest(string department)
+         {
+             try
+             {
+                 var t = context.DepartmentsBase.Single(x => x.Name == department);
+
+                 var w = t.Employees.ToList();
+                 foreach (var x in w)
+                 {
+                     Console.WriteLine(x.Name);
+                 }
+             }
+             catch (System.InvalidOperationException e)
+             {
+                 Console.WriteLine("Wrong department name");
+             }
+
+         }
         //Получить список и число всех начальников отделов
          public void ChiefListRequest()
          {
@@ -40,6 +59,16 @@ namespace TestConsole.Sql
              {
                  Console.WriteLine(employee.Name);
              }
+         }
+        //Получить список всех отделов
+         public void DepartmentListRequest()
+         {
+             var t = context.DepartmentsBase.ToList();
+             foreach (var x in t)
+             {
+                 Console.WriteLine(x.Name);
+             }
+
          }
     }
 }

@@ -54,6 +54,7 @@ namespace TestConsole.DataObjects.DepartmentsBase
                   Employees = new List<Employees>()
                   {
                       emp
+                      //new Employees
                   }
               });
               context.SaveChanges();

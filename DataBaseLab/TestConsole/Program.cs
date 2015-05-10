@@ -45,9 +45,15 @@ namespace TestConsole
             FirstEmployeesRequests req = new FirstEmployeesRequests();
             Console.WriteLine("Получить список и общее число всех pаботников аэpопоpта");
             req.EmployeesListRequest();
+            Console.WriteLine();
             Console.WriteLine("Получить список и общее число всех начальников отделов");
             req.ChiefListRequest();
+            Console.WriteLine();
             Console.WriteLine("Получить список и число pаботников указанного отдела");
+            Console.WriteLine("Введите название отдела из списка:");
+            req.DepartmentListRequest();
+            string department = Console.ReadLine();
+            req.EmployeesOfDepartmentRequest(department);
             Console.ReadKey();
         }
         private void AddDataToDataBase()
@@ -77,8 +83,6 @@ namespace TestConsole
             var departments = new DepartmentsAdding();
             departments.CreateDepartments();
             departments.AddChiefsToDepartments();
-            //var employeesAndChilds = new EmployeesAndChildrensAdding();
-            //employeesAndChilds.CreateEmployeesAndChildrens();
         }
         private void PrintRequestList()
         {
