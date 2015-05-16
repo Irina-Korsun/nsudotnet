@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using TestConsole;
+using DataBaseLab.MainSystem;
 using DataBaseApp;
 using System.Data.SqlClient;
 using System.Configuration;
@@ -24,13 +25,17 @@ namespace WpfFormsAndTables
     /// </summary>
     public partial class MainWindow : Window
     {
-       
+        private BaseContext context;
         public MainWindow()
         {
+            this.context = new BaseContext();
             InitializeComponent();
             var add = new TestConsole.DropAndAdd();
-          //  add.Start();
-           // this.ListBox1
+            add.AddDataToDataBase();
+            foreach (var t in context.EmployeesBase.ToList())
+            {
+                this.ListBox1.Items.Add(t.Name);
+            }
          //   var a = new MainWindow();
             //this.Start();
         }

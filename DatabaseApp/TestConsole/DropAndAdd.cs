@@ -34,5 +34,33 @@ namespace TestConsole
             context.Database.Delete();
             context.SaveChanges();
         }
+        public void AddDataToDataBase()
+        {
+            var aircraftTypes = new AircraftTypesAdding();
+            aircraftTypes.CreateAircraftTypes();
+            var arivalAirports = new ArivalAirportsAdding();
+            arivalAirports.CreateArivalAirports();
+            var flightCategories = new FlightCategoriesAdding();
+            flightCategories.CreateFlightCategories();
+            var flightStatuses = new FlightStatusesAdding();
+            flightStatuses.CreateFlightStatuses();
+            var techChecks = new TechChecksAdding();
+            techChecks.CreateTechChecks();
+            var aircrafts = new AircraftsAdding();
+            aircrafts.CreateAircrafts();
+            var flights = new FlightAdding();
+            flights.CreateFlights();
+            var actualFlights = new ActualFlightsAdding();
+            actualFlights.CreateActualFlights();
+            var schedule = new ScheduleAdding();
+            schedule.CreateSchedule();
+            var positions = new PositionsAdding();
+            positions.CreatePositions();
+            var brigades = new BrigadesAdding();
+            brigades.CreateBrigades();
+            var departments = new DepartmentsAdding();
+            departments.CreateDepartments();
+            departments.AddChiefsToDepartments();
+        }
     }
 }
