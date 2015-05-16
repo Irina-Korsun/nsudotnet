@@ -24,7 +24,7 @@ using System.IO;
 
 namespace TestConsole
 {
-    class Program
+    public class Program
     {
         private BaseContext context;
 
@@ -33,30 +33,30 @@ namespace TestConsole
             var t = new Program();
             t.Start();
         }
-        private void Start()
+        public void Start()
         {
             this.context = new BaseContext();
             context.Database.Delete();
             context.SaveChanges();
-            Console.WriteLine("The Data Base was Dropped");
-            AddDataToDataBase();
-            Console.WriteLine("Data added");
+            //Console.WriteLine("The Data Base was Dropped");
+            //AddDataToDataBase();
+            //Console.WriteLine("Data added");
 
-            FirstEmployeesRequests req = new FirstEmployeesRequests();
-            Console.WriteLine("Получить список и общее число всех pаботников аэpопоpта");
-            req.EmployeesListRequest();
-            Console.WriteLine();
-            Console.WriteLine("Получить список и общее число всех начальников отделов");
-            req.ChiefListRequest();
-            Console.WriteLine();
-            Console.WriteLine("Получить список и число pаботников указанного отдела");
-            Console.WriteLine("Введите название отдела из списка:");
-            req.DepartmentListRequest();
-            string department = Console.ReadLine();
-            req.EmployeesOfDepartmentRequest(department);
-            Console.ReadKey();
+            //FirstEmployeesRequests req = new FirstEmployeesRequests();
+            //Console.WriteLine("Получить список и общее число всех pаботников аэpопоpта");
+            //req.EmployeesListRequest();
+            //Console.WriteLine();
+            //Console.WriteLine("Получить список и общее число всех начальников отделов");
+            //req.ChiefListRequest();
+            //Console.WriteLine();
+            //Console.WriteLine("Получить список и число pаботников указанного отдела");
+            //Console.WriteLine("Введите название отдела из списка:");
+            //req.DepartmentListRequest();
+            //string department = Console.ReadLine();
+            //req.EmployeesOfDepartmentRequest(department);
+            //Console.ReadKey();
         }
-        private void AddDataToDataBase()
+        public void AddDataToDataBase()
         {
             var aircraftTypes = new AircraftTypesAdding();
             aircraftTypes.CreateAircraftTypes();
