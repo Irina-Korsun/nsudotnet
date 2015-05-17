@@ -2,6 +2,7 @@
 using System.Linq;
 using TestConsole;
 using DataBaseLab.MainSystem;
+using DataBaseLab.DataObjects;
 using DataBaseApp;
 using System.Data.SqlClient;
 using System.Configuration;
@@ -17,6 +18,7 @@ using System.Windows.Shapes;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Web;
+using System.Data;
 
 namespace WpfFormsAndTables
 {
@@ -30,19 +32,29 @@ namespace WpfFormsAndTables
         {
             this.context = new BaseContext();
             InitializeComponent();
-            var add = new TestConsole.DropAndAdd();
-            add.AddDataToDataBase();
-            foreach (var t in context.EmployeesBase.ToList())
-            {
-                this.ListBox1.Items.Add(t.Name);
-            }
-         //   var a = new MainWindow();
-            //this.Start();
         }
-       public void Start()
+
+
+        private void Dep_Click(object sender, RoutedEventArgs e)
         {
-            
-            //add.AddDataToDataBase();
+            Dat.DataContext = context.DepartmentsBase.ToList<Departments>();
         }
+
+
+        private void Emp_click(object sender, RoutedEventArgs e)
+        {
+            Dat.DataContext = context.EmployeesBase.ToList<Employees>();
+        }
+
+        private void Pos_Click(object sender, RoutedEventArgs e)
+        {
+            Dat.DataContext = context.PositionsBase.ToList<Positions>();
+        }
+
+
+
+
+
+       
     }
 }

@@ -24,5 +24,7 @@ namespace DataBaseLab.DataObjects
         public int Salary { get; set; }
         public List<Childs> Children { get; set; }
         public Brigades Brigade { get; set; }
+
+  
     }
 }

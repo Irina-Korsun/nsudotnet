@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="fe5aa7deb9e5446785a1847b6d249ddc" Name="Diagram1">
+        <EntityTypeShape EntityType="DataBaseLabModel.C__MigrationHistory" Width="1.5" PointX="0.75" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataBaseLabModel.ActualFlightsBase" Width="1.5" PointX="12.25" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataBaseLabModel.AircraftsBase" Width="1.5" PointX="10" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataBaseLabModel.AircraftTypesBase" Width="1.5" PointX="7.75" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataBaseLabModel.ArivalAirportsBase" Width="1.5" PointX="7.75" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataBaseLabModel.BrigadesBase" Width="1.5" PointX="0.75" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataBaseLabModel.ChildsBase" Width="1.5" PointX="5.25" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataBaseLabModel.DepartmentsBase" Width="1.5" PointX="5.25" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataBaseLabModel.EmployeesBase" Width="1.5" PointX="3" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataBaseLabModel.FlightCategoriesBase" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataBaseLabModel.FlightsBase" Width="1.5" PointX="10" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataBaseLabModel.FlightStatusesBase" Width="1.5" PointX="10" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataBaseLabModel.MedicalChecksBase" Width="1.5" PointX="5.25" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataBaseLabModel.PositionsBase" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataBaseLabModel.SceduleBase" Width="1.5" PointX="15.25" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataBaseLabModel.TechChecksBase" Width="1.5" PointX="7.75" PointY="9.625" IsExpanded="true" />
+        <AssociationConnector Association="DataBaseLabModel.FK_dbo_ActualFlightsBase_dbo_AircraftsBase_Aircraft_ID" ManuallyRouted="false" />
+        <AssociationConnector Association="DataBaseLabModel.FK_dbo_ActualFlightsBase_dbo_FlightsBase_Flight_ID" ManuallyRouted="false" />
+        <AssociationConnector Association="DataBaseLabModel.FK_dbo_ActualFlightsBase_dbo_FlightStatusesBase_FlightStatus_ID" ManuallyRouted="false" />
+        <AssociationConnector Association="DataBaseLabModel.FK_dbo_AircraftsBase_dbo_AircraftTypesBase_AircraftType_ID" ManuallyRouted="false" />
+        <AssociationConnector Association="DataBaseLabModel.FK_dbo_AircraftsBase_dbo_TechChecksBase_TechCheck_ID" ManuallyRouted="false" />
+        <AssociationConnector Association="DataBaseLabModel.FK_dbo_SceduleBase_dbo_AircraftTypesBase_AircraftType_ID" ManuallyRouted="false" />
+        <AssociationConnector Association="DataBaseLabModel.FK_dbo_FlightsBase_dbo_ArivalAirportsBase_Route_ID" ManuallyRouted="false" />
+        <AssociationConnector Association="DataBaseLabModel.FK_dbo_EmployeesBase_dbo_BrigadesBase_Brigade_ID" ManuallyRouted="false" />
+        <AssociationConnector Association="DataBaseLabModel.FK_dbo_ChildsBase_dbo_EmployeesBase_ParentRefId" ManuallyRouted="false" />
+        <AssociationConnector Association="DataBaseLabModel.FK_dbo_DepartmentsBase_dbo_EmployeesBase_Chief_ID" ManuallyRouted="false" />
+        <AssociationConnector Association="DataBaseLabModel.FK_dbo_EmployeesBase_dbo_DepartmentsBase_DepartmentRefId" ManuallyRouted="false" />
+        <AssociationConnector Association="DataBaseLabModel.FK_dbo_EmployeesBase_dbo_PositionsBase_Position_ID" ManuallyRouted="false" />
+        <AssociationConnector Association="DataBaseLabModel.FK_dbo_MedicalChecksBase_dbo_EmployeesBase_Employee_ID" ManuallyRouted="false" />
+        <AssociationConnector Association="DataBaseLabModel.FK_dbo_FlightsBase_dbo_FlightCategoriesBase_Category_ID" ManuallyRouted="false" />
+        <AssociationConnector Association="DataBaseLabModel.FK_dbo_SceduleBase_dbo_FlightsBase_Flight_ID" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

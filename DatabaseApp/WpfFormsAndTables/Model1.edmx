@@ -1,0 +1,1055 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище DataBaseLabModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+          <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ActualFlightsBase">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SeatsCount" Type="int" Nullable="false" />
+          <Property Name="TicketsSold" Type="int" Nullable="false" />
+          <Property Name="TicketsReturned" Type="int" Nullable="false" />
+          <Property Name="DepartureDateTime" Type="datetime" Nullable="false" />
+          <Property Name="ArivalDateTime" Type="datetime" Nullable="false" />
+          <Property Name="Aircraft_ID" Type="bigint" />
+          <Property Name="Flight_ID" Type="bigint" />
+          <Property Name="FlightStatus_ID" Type="bigint" />
+        </EntityType>
+        <EntityType Name="AircraftsBase">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NumberOfFlights" Type="int" Nullable="false" />
+          <Property Name="AircraftType_ID" Type="bigint" />
+          <Property Name="TechCheck_ID" Type="bigint" />
+        </EntityType>
+        <EntityType Name="AircraftTypesBase">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="ArivalAirportsBase">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="Country" Type="nvarchar(max)" />
+          <Property Name="Town" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="BrigadesBase">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="ChildsBase">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="SurName" Type="nvarchar(max)" />
+          <Property Name="ParentRefId" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DepartmentsBase">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="Chief_ID" Type="bigint" />
+        </EntityType>
+        <EntityType Name="EmployeesBase">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DepartmentRefId" Type="bigint" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="Surname" Type="nvarchar(max)" />
+          <Property Name="HireDate" Type="datetime" Nullable="false" />
+          <Property Name="Sex" Type="bit" Nullable="false" />
+          <Property Name="BirthDate" Type="datetime" Nullable="false" />
+          <Property Name="Salary" Type="int" Nullable="false" />
+          <Property Name="Brigade_ID" Type="bigint" />
+          <Property Name="Position_ID" Type="bigint" />
+        </EntityType>
+        <EntityType Name="FlightCategoriesBase">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Type" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="FlightsBase">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PassengersCount" Type="int" Nullable="false" />
+          <Property Name="Category_ID" Type="bigint" />
+          <Property Name="Route_ID" Type="bigint" />
+        </EntityType>
+        <EntityType Name="FlightStatusesBase">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Type" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="MedicalChecksBase">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="Valid" Type="bit" Nullable="false" />
+          <Property Name="Employee_ID" Type="bigint" />
+        </EntityType>
+        <EntityType Name="PositionsBase">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="MedicCheckPeriod" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SceduleBase">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DepartureDateTime" Type="datetime" Nullable="false" />
+          <Property Name="ArivalDateTime" Type="datetime" Nullable="false" />
+          <Property Name="Price" Type="int" Nullable="false" />
+          <Property Name="AircraftType_ID" Type="bigint" />
+          <Property Name="Flight_ID" Type="bigint" />
+        </EntityType>
+        <EntityType Name="TechChecksBase">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="MustBeFixed" Type="bit" Nullable="false" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_dbo_ActualFlightsBase_dbo_AircraftsBase_Aircraft_ID">
+          <End Role="AircraftsBase" Type="Self.AircraftsBase" Multiplicity="0..1" />
+          <End Role="ActualFlightsBase" Type="Self.ActualFlightsBase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AircraftsBase">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ActualFlightsBase">
+              <PropertyRef Name="Aircraft_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ActualFlightsBase_dbo_FlightsBase_Flight_ID">
+          <End Role="FlightsBase" Type="Self.FlightsBase" Multiplicity="0..1" />
+          <End Role="ActualFlightsBase" Type="Self.ActualFlightsBase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FlightsBase">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ActualFlightsBase">
+              <PropertyRef Name="Flight_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ActualFlightsBase_dbo_FlightStatusesBase_FlightStatus_ID">
+          <End Role="FlightStatusesBase" Type="Self.FlightStatusesBase" Multiplicity="0..1" />
+          <End Role="ActualFlightsBase" Type="Self.ActualFlightsBase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FlightStatusesBase">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ActualFlightsBase">
+              <PropertyRef Name="FlightStatus_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AircraftsBase_dbo_AircraftTypesBase_AircraftType_ID">
+          <End Role="AircraftTypesBase" Type="Self.AircraftTypesBase" Multiplicity="0..1" />
+          <End Role="AircraftsBase" Type="Self.AircraftsBase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AircraftTypesBase">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AircraftsBase">
+              <PropertyRef Name="AircraftType_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AircraftsBase_dbo_TechChecksBase_TechCheck_ID">
+          <End Role="TechChecksBase" Type="Self.TechChecksBase" Multiplicity="0..1" />
+          <End Role="AircraftsBase" Type="Self.AircraftsBase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TechChecksBase">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AircraftsBase">
+              <PropertyRef Name="TechCheck_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ChildsBase_dbo_EmployeesBase_ParentRefId">
+          <End Role="EmployeesBase" Type="Self.EmployeesBase" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ChildsBase" Type="Self.ChildsBase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EmployeesBase">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ChildsBase">
+              <PropertyRef Name="ParentRefId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_DepartmentsBase_dbo_EmployeesBase_Chief_ID">
+          <End Role="EmployeesBase" Type="Self.EmployeesBase" Multiplicity="0..1" />
+          <End Role="DepartmentsBase" Type="Self.DepartmentsBase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EmployeesBase">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="DepartmentsBase">
+              <PropertyRef Name="Chief_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_EmployeesBase_dbo_BrigadesBase_Brigade_ID">
+          <End Role="BrigadesBase" Type="Self.BrigadesBase" Multiplicity="0..1" />
+          <End Role="EmployeesBase" Type="Self.EmployeesBase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BrigadesBase">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EmployeesBase">
+              <PropertyRef Name="Brigade_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_EmployeesBase_dbo_DepartmentsBase_DepartmentRefId">
+          <End Role="DepartmentsBase" Type="Self.DepartmentsBase" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="EmployeesBase" Type="Self.EmployeesBase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DepartmentsBase">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EmployeesBase">
+              <PropertyRef Name="DepartmentRefId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_EmployeesBase_dbo_PositionsBase_Position_ID">
+          <End Role="PositionsBase" Type="Self.PositionsBase" Multiplicity="0..1" />
+          <End Role="EmployeesBase" Type="Self.EmployeesBase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PositionsBase">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EmployeesBase">
+              <PropertyRef Name="Position_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_FlightsBase_dbo_ArivalAirportsBase_Route_ID">
+          <End Role="ArivalAirportsBase" Type="Self.ArivalAirportsBase" Multiplicity="0..1" />
+          <End Role="FlightsBase" Type="Self.FlightsBase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ArivalAirportsBase">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="FlightsBase">
+              <PropertyRef Name="Route_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_FlightsBase_dbo_FlightCategoriesBase_Category_ID">
+          <End Role="FlightCategoriesBase" Type="Self.FlightCategoriesBase" Multiplicity="0..1" />
+          <End Role="FlightsBase" Type="Self.FlightsBase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FlightCategoriesBase">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="FlightsBase">
+              <PropertyRef Name="Category_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_MedicalChecksBase_dbo_EmployeesBase_Employee_ID">
+          <End Role="EmployeesBase" Type="Self.EmployeesBase" Multiplicity="0..1" />
+          <End Role="MedicalChecksBase" Type="Self.MedicalChecksBase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EmployeesBase">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MedicalChecksBase">
+              <PropertyRef Name="Employee_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_SceduleBase_dbo_AircraftTypesBase_AircraftType_ID">
+          <End Role="AircraftTypesBase" Type="Self.AircraftTypesBase" Multiplicity="0..1" />
+          <End Role="SceduleBase" Type="Self.SceduleBase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AircraftTypesBase">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SceduleBase">
+              <PropertyRef Name="AircraftType_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_SceduleBase_dbo_FlightsBase_Flight_ID">
+          <End Role="FlightsBase" Type="Self.FlightsBase" Multiplicity="0..1" />
+          <End Role="SceduleBase" Type="Self.SceduleBase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FlightsBase">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SceduleBase">
+              <PropertyRef Name="Flight_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище DataBaseLabModelContainer">
+          <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ActualFlightsBase" EntityType="Self.ActualFlightsBase" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AircraftsBase" EntityType="Self.AircraftsBase" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AircraftTypesBase" EntityType="Self.AircraftTypesBase" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ArivalAirportsBase" EntityType="Self.ArivalAirportsBase" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BrigadesBase" EntityType="Self.BrigadesBase" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ChildsBase" EntityType="Self.ChildsBase" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DepartmentsBase" EntityType="Self.DepartmentsBase" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmployeesBase" EntityType="Self.EmployeesBase" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FlightCategoriesBase" EntityType="Self.FlightCategoriesBase" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FlightsBase" EntityType="Self.FlightsBase" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FlightStatusesBase" EntityType="Self.FlightStatusesBase" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MedicalChecksBase" EntityType="Self.MedicalChecksBase" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PositionsBase" EntityType="Self.PositionsBase" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SceduleBase" EntityType="Self.SceduleBase" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TechChecksBase" EntityType="Self.TechChecksBase" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_dbo_ActualFlightsBase_dbo_AircraftsBase_Aircraft_ID" Association="Self.FK_dbo_ActualFlightsBase_dbo_AircraftsBase_Aircraft_ID">
+            <End Role="AircraftsBase" EntitySet="AircraftsBase" />
+            <End Role="ActualFlightsBase" EntitySet="ActualFlightsBase" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ActualFlightsBase_dbo_FlightsBase_Flight_ID" Association="Self.FK_dbo_ActualFlightsBase_dbo_FlightsBase_Flight_ID">
+            <End Role="FlightsBase" EntitySet="FlightsBase" />
+            <End Role="ActualFlightsBase" EntitySet="ActualFlightsBase" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ActualFlightsBase_dbo_FlightStatusesBase_FlightStatus_ID" Association="Self.FK_dbo_ActualFlightsBase_dbo_FlightStatusesBase_FlightStatus_ID">
+            <End Role="FlightStatusesBase" EntitySet="FlightStatusesBase" />
+            <End Role="ActualFlightsBase" EntitySet="ActualFlightsBase" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AircraftsBase_dbo_AircraftTypesBase_AircraftType_ID" Association="Self.FK_dbo_AircraftsBase_dbo_AircraftTypesBase_AircraftType_ID">
+            <End Role="AircraftTypesBase" EntitySet="AircraftTypesBase" />
+            <End Role="AircraftsBase" EntitySet="AircraftsBase" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AircraftsBase_dbo_TechChecksBase_TechCheck_ID" Association="Self.FK_dbo_AircraftsBase_dbo_TechChecksBase_TechCheck_ID">
+            <End Role="TechChecksBase" EntitySet="TechChecksBase" />
+            <End Role="AircraftsBase" EntitySet="AircraftsBase" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ChildsBase_dbo_EmployeesBase_ParentRefId" Association="Self.FK_dbo_ChildsBase_dbo_EmployeesBase_ParentRefId">
+            <End Role="EmployeesBase" EntitySet="EmployeesBase" />
+            <End Role="ChildsBase" EntitySet="ChildsBase" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_DepartmentsBase_dbo_EmployeesBase_Chief_ID" Association="Self.FK_dbo_DepartmentsBase_dbo_EmployeesBase_Chief_ID">
+            <End Role="EmployeesBase" EntitySet="EmployeesBase" />
+            <End Role="DepartmentsBase" EntitySet="DepartmentsBase" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_EmployeesBase_dbo_BrigadesBase_Brigade_ID" Association="Self.FK_dbo_EmployeesBase_dbo_BrigadesBase_Brigade_ID">
+            <End Role="BrigadesBase" EntitySet="BrigadesBase" />
+            <End Role="EmployeesBase" EntitySet="EmployeesBase" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_EmployeesBase_dbo_DepartmentsBase_DepartmentRefId" Association="Self.FK_dbo_EmployeesBase_dbo_DepartmentsBase_DepartmentRefId">
+            <End Role="DepartmentsBase" EntitySet="DepartmentsBase" />
+            <End Role="EmployeesBase" EntitySet="EmployeesBase" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_EmployeesBase_dbo_PositionsBase_Position_ID" Association="Self.FK_dbo_EmployeesBase_dbo_PositionsBase_Position_ID">
+            <End Role="PositionsBase" EntitySet="PositionsBase" />
+            <End Role="EmployeesBase" EntitySet="EmployeesBase" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_FlightsBase_dbo_ArivalAirportsBase_Route_ID" Association="Self.FK_dbo_FlightsBase_dbo_ArivalAirportsBase_Route_ID">
+            <End Role="ArivalAirportsBase" EntitySet="ArivalAirportsBase" />
+            <End Role="FlightsBase" EntitySet="FlightsBase" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_FlightsBase_dbo_FlightCategoriesBase_Category_ID" Association="Self.FK_dbo_FlightsBase_dbo_FlightCategoriesBase_Category_ID">
+            <End Role="FlightCategoriesBase" EntitySet="FlightCategoriesBase" />
+            <End Role="FlightsBase" EntitySet="FlightsBase" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_MedicalChecksBase_dbo_EmployeesBase_Employee_ID" Association="Self.FK_dbo_MedicalChecksBase_dbo_EmployeesBase_Employee_ID">
+            <End Role="EmployeesBase" EntitySet="EmployeesBase" />
+            <End Role="MedicalChecksBase" EntitySet="MedicalChecksBase" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_SceduleBase_dbo_AircraftTypesBase_AircraftType_ID" Association="Self.FK_dbo_SceduleBase_dbo_AircraftTypesBase_AircraftType_ID">
+            <End Role="AircraftTypesBase" EntitySet="AircraftTypesBase" />
+            <End Role="SceduleBase" EntitySet="SceduleBase" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_SceduleBase_dbo_FlightsBase_Flight_ID" Association="Self.FK_dbo_SceduleBase_dbo_FlightsBase_Flight_ID">
+            <End Role="FlightsBase" EntitySet="FlightsBase" />
+            <End Role="SceduleBase" EntitySet="SceduleBase" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DataBaseLabModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="C__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ContextKey" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Model" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ActualFlightsBase">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SeatsCount" Type="Int32" Nullable="false" />
+          <Property Name="TicketsSold" Type="Int32" Nullable="false" />
+          <Property Name="TicketsReturned" Type="Int32" Nullable="false" />
+          <Property Name="DepartureDateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ArivalDateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Aircraft_ID" Type="Int64" />
+          <Property Name="Flight_ID" Type="Int64" />
+          <Property Name="FlightStatus_ID" Type="Int64" />
+          <NavigationProperty Name="AircraftsBase" Relationship="Self.FK_dbo_ActualFlightsBase_dbo_AircraftsBase_Aircraft_ID" FromRole="ActualFlightsBase" ToRole="AircraftsBase" />
+          <NavigationProperty Name="FlightsBase" Relationship="Self.FK_dbo_ActualFlightsBase_dbo_FlightsBase_Flight_ID" FromRole="ActualFlightsBase" ToRole="FlightsBase" />
+          <NavigationProperty Name="FlightStatusesBase" Relationship="Self.FK_dbo_ActualFlightsBase_dbo_FlightStatusesBase_FlightStatus_ID" FromRole="ActualFlightsBase" ToRole="FlightStatusesBase" />
+        </EntityType>
+        <EntityType Name="AircraftsBase">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NumberOfFlights" Type="Int32" Nullable="false" />
+          <Property Name="AircraftType_ID" Type="Int64" />
+          <Property Name="TechCheck_ID" Type="Int64" />
+          <NavigationProperty Name="ActualFlightsBase" Relationship="Self.FK_dbo_ActualFlightsBase_dbo_AircraftsBase_Aircraft_ID" FromRole="AircraftsBase" ToRole="ActualFlightsBase" />
+          <NavigationProperty Name="AircraftTypesBase" Relationship="Self.FK_dbo_AircraftsBase_dbo_AircraftTypesBase_AircraftType_ID" FromRole="AircraftsBase" ToRole="AircraftTypesBase" />
+          <NavigationProperty Name="TechChecksBase" Relationship="Self.FK_dbo_AircraftsBase_dbo_TechChecksBase_TechCheck_ID" FromRole="AircraftsBase" ToRole="TechChecksBase" />
+        </EntityType>
+        <EntityType Name="AircraftTypesBase">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AircraftsBase" Relationship="Self.FK_dbo_AircraftsBase_dbo_AircraftTypesBase_AircraftType_ID" FromRole="AircraftTypesBase" ToRole="AircraftsBase" />
+          <NavigationProperty Name="SceduleBase" Relationship="Self.FK_dbo_SceduleBase_dbo_AircraftTypesBase_AircraftType_ID" FromRole="AircraftTypesBase" ToRole="SceduleBase" />
+        </EntityType>
+        <EntityType Name="ArivalAirportsBase">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Country" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Town" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="FlightsBase" Relationship="Self.FK_dbo_FlightsBase_dbo_ArivalAirportsBase_Route_ID" FromRole="ArivalAirportsBase" ToRole="FlightsBase" />
+        </EntityType>
+        <EntityType Name="BrigadesBase">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="EmployeesBase" Relationship="Self.FK_dbo_EmployeesBase_dbo_BrigadesBase_Brigade_ID" FromRole="BrigadesBase" ToRole="EmployeesBase" />
+        </EntityType>
+        <EntityType Name="ChildsBase">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SurName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ParentRefId" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="EmployeesBase" Relationship="Self.FK_dbo_ChildsBase_dbo_EmployeesBase_ParentRefId" FromRole="ChildsBase" ToRole="EmployeesBase" />
+        </EntityType>
+        <EntityType Name="DepartmentsBase">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Chief_ID" Type="Int64" />
+          <NavigationProperty Name="EmployeesBase" Relationship="Self.FK_dbo_DepartmentsBase_dbo_EmployeesBase_Chief_ID" FromRole="DepartmentsBase" ToRole="EmployeesBase" />
+          <NavigationProperty Name="EmployeesBase1" Relationship="Self.FK_dbo_EmployeesBase_dbo_DepartmentsBase_DepartmentRefId" FromRole="DepartmentsBase" ToRole="EmployeesBase" />
+        </EntityType>
+        <EntityType Name="EmployeesBase">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DepartmentRefId" Type="Int64" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Surname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="HireDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Sex" Type="Boolean" Nullable="false" />
+          <Property Name="BirthDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Salary" Type="Int32" Nullable="false" />
+          <Property Name="Brigade_ID" Type="Int64" />
+          <Property Name="Position_ID" Type="Int64" />
+          <NavigationProperty Name="BrigadesBase" Relationship="Self.FK_dbo_EmployeesBase_dbo_BrigadesBase_Brigade_ID" FromRole="EmployeesBase" ToRole="BrigadesBase" />
+          <NavigationProperty Name="ChildsBase" Relationship="Self.FK_dbo_ChildsBase_dbo_EmployeesBase_ParentRefId" FromRole="EmployeesBase" ToRole="ChildsBase" />
+          <NavigationProperty Name="DepartmentsBase" Relationship="Self.FK_dbo_DepartmentsBase_dbo_EmployeesBase_Chief_ID" FromRole="EmployeesBase" ToRole="DepartmentsBase" />
+          <NavigationProperty Name="DepartmentsBase1" Relationship="Self.FK_dbo_EmployeesBase_dbo_DepartmentsBase_DepartmentRefId" FromRole="EmployeesBase" ToRole="DepartmentsBase" />
+          <NavigationProperty Name="PositionsBase" Relationship="Self.FK_dbo_EmployeesBase_dbo_PositionsBase_Position_ID" FromRole="EmployeesBase" ToRole="PositionsBase" />
+          <NavigationProperty Name="MedicalChecksBase" Relationship="Self.FK_dbo_MedicalChecksBase_dbo_EmployeesBase_Employee_ID" FromRole="EmployeesBase" ToRole="MedicalChecksBase" />
+        </EntityType>
+        <EntityType Name="FlightCategoriesBase">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="FlightsBase" Relationship="Self.FK_dbo_FlightsBase_dbo_FlightCategoriesBase_Category_ID" FromRole="FlightCategoriesBase" ToRole="FlightsBase" />
+        </EntityType>
+        <EntityType Name="FlightsBase">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PassengersCount" Type="Int32" Nullable="false" />
+          <Property Name="Category_ID" Type="Int64" />
+          <Property Name="Route_ID" Type="Int64" />
+          <NavigationProperty Name="ActualFlightsBase" Relationship="Self.FK_dbo_ActualFlightsBase_dbo_FlightsBase_Flight_ID" FromRole="FlightsBase" ToRole="ActualFlightsBase" />
+          <NavigationProperty Name="ArivalAirportsBase" Relationship="Self.FK_dbo_FlightsBase_dbo_ArivalAirportsBase_Route_ID" FromRole="FlightsBase" ToRole="ArivalAirportsBase" />
+          <NavigationProperty Name="FlightCategoriesBase" Relationship="Self.FK_dbo_FlightsBase_dbo_FlightCategoriesBase_Category_ID" FromRole="FlightsBase" ToRole="FlightCategoriesBase" />
+          <NavigationProperty Name="SceduleBase" Relationship="Self.FK_dbo_SceduleBase_dbo_FlightsBase_Flight_ID" FromRole="FlightsBase" ToRole="SceduleBase" />
+        </EntityType>
+        <EntityType Name="FlightStatusesBase">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ActualFlightsBase" Relationship="Self.FK_dbo_ActualFlightsBase_dbo_FlightStatusesBase_FlightStatus_ID" FromRole="FlightStatusesBase" ToRole="ActualFlightsBase" />
+        </EntityType>
+        <EntityType Name="MedicalChecksBase">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Valid" Type="Boolean" Nullable="false" />
+          <Property Name="Employee_ID" Type="Int64" />
+          <NavigationProperty Name="EmployeesBase" Relationship="Self.FK_dbo_MedicalChecksBase_dbo_EmployeesBase_Employee_ID" FromRole="MedicalChecksBase" ToRole="EmployeesBase" />
+        </EntityType>
+        <EntityType Name="PositionsBase">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MedicCheckPeriod" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="EmployeesBase" Relationship="Self.FK_dbo_EmployeesBase_dbo_PositionsBase_Position_ID" FromRole="PositionsBase" ToRole="EmployeesBase" />
+        </EntityType>
+        <EntityType Name="SceduleBase">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DepartureDateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ArivalDateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Price" Type="Int32" Nullable="false" />
+          <Property Name="AircraftType_ID" Type="Int64" />
+          <Property Name="Flight_ID" Type="Int64" />
+          <NavigationProperty Name="AircraftTypesBase" Relationship="Self.FK_dbo_SceduleBase_dbo_AircraftTypesBase_AircraftType_ID" FromRole="SceduleBase" ToRole="AircraftTypesBase" />
+          <NavigationProperty Name="FlightsBase" Relationship="Self.FK_dbo_SceduleBase_dbo_FlightsBase_Flight_ID" FromRole="SceduleBase" ToRole="FlightsBase" />
+        </EntityType>
+        <EntityType Name="TechChecksBase">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="MustBeFixed" Type="Boolean" Nullable="false" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="AircraftsBase" Relationship="Self.FK_dbo_AircraftsBase_dbo_TechChecksBase_TechCheck_ID" FromRole="TechChecksBase" ToRole="AircraftsBase" />
+        </EntityType>
+        <Association Name="FK_dbo_ActualFlightsBase_dbo_AircraftsBase_Aircraft_ID">
+          <End Role="AircraftsBase" Type="Self.AircraftsBase" Multiplicity="0..1" />
+          <End Role="ActualFlightsBase" Type="Self.ActualFlightsBase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AircraftsBase">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ActualFlightsBase">
+              <PropertyRef Name="Aircraft_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ActualFlightsBase_dbo_FlightsBase_Flight_ID">
+          <End Role="FlightsBase" Type="Self.FlightsBase" Multiplicity="0..1" />
+          <End Role="ActualFlightsBase" Type="Self.ActualFlightsBase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FlightsBase">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ActualFlightsBase">
+              <PropertyRef Name="Flight_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ActualFlightsBase_dbo_FlightStatusesBase_FlightStatus_ID">
+          <End Role="FlightStatusesBase" Type="Self.FlightStatusesBase" Multiplicity="0..1" />
+          <End Role="ActualFlightsBase" Type="Self.ActualFlightsBase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FlightStatusesBase">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ActualFlightsBase">
+              <PropertyRef Name="FlightStatus_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AircraftsBase_dbo_AircraftTypesBase_AircraftType_ID">
+          <End Role="AircraftTypesBase" Type="Self.AircraftTypesBase" Multiplicity="0..1" />
+          <End Role="AircraftsBase" Type="Self.AircraftsBase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AircraftTypesBase">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AircraftsBase">
+              <PropertyRef Name="AircraftType_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AircraftsBase_dbo_TechChecksBase_TechCheck_ID">
+          <End Role="TechChecksBase" Type="Self.TechChecksBase" Multiplicity="0..1" />
+          <End Role="AircraftsBase" Type="Self.AircraftsBase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TechChecksBase">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AircraftsBase">
+              <PropertyRef Name="TechCheck_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_SceduleBase_dbo_AircraftTypesBase_AircraftType_ID">
+          <End Role="AircraftTypesBase" Type="Self.AircraftTypesBase" Multiplicity="0..1" />
+          <End Role="SceduleBase" Type="Self.SceduleBase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AircraftTypesBase">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SceduleBase">
+              <PropertyRef Name="AircraftType_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_FlightsBase_dbo_ArivalAirportsBase_Route_ID">
+          <End Role="ArivalAirportsBase" Type="Self.ArivalAirportsBase" Multiplicity="0..1" />
+          <End Role="FlightsBase" Type="Self.FlightsBase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ArivalAirportsBase">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="FlightsBase">
+              <PropertyRef Name="Route_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_EmployeesBase_dbo_BrigadesBase_Brigade_ID">
+          <End Role="BrigadesBase" Type="Self.BrigadesBase" Multiplicity="0..1" />
+          <End Role="EmployeesBase" Type="Self.EmployeesBase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BrigadesBase">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EmployeesBase">
+              <PropertyRef Name="Brigade_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ChildsBase_dbo_EmployeesBase_ParentRefId">
+          <End Role="EmployeesBase" Type="Self.EmployeesBase" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ChildsBase" Type="Self.ChildsBase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EmployeesBase">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ChildsBase">
+              <PropertyRef Name="ParentRefId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_DepartmentsBase_dbo_EmployeesBase_Chief_ID">
+          <End Role="EmployeesBase" Type="Self.EmployeesBase" Multiplicity="0..1" />
+          <End Role="DepartmentsBase" Type="Self.DepartmentsBase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EmployeesBase">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="DepartmentsBase">
+              <PropertyRef Name="Chief_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_EmployeesBase_dbo_DepartmentsBase_DepartmentRefId">
+          <End Role="DepartmentsBase" Type="Self.DepartmentsBase" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="EmployeesBase" Type="Self.EmployeesBase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DepartmentsBase">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EmployeesBase">
+              <PropertyRef Name="DepartmentRefId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_EmployeesBase_dbo_PositionsBase_Position_ID">
+          <End Role="PositionsBase" Type="Self.PositionsBase" Multiplicity="0..1" />
+          <End Role="EmployeesBase" Type="Self.EmployeesBase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PositionsBase">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EmployeesBase">
+              <PropertyRef Name="Position_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_MedicalChecksBase_dbo_EmployeesBase_Employee_ID">
+          <End Role="EmployeesBase" Type="Self.EmployeesBase" Multiplicity="0..1" />
+          <End Role="MedicalChecksBase" Type="Self.MedicalChecksBase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EmployeesBase">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MedicalChecksBase">
+              <PropertyRef Name="Employee_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_FlightsBase_dbo_FlightCategoriesBase_Category_ID">
+          <End Role="FlightCategoriesBase" Type="Self.FlightCategoriesBase" Multiplicity="0..1" />
+          <End Role="FlightsBase" Type="Self.FlightsBase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FlightCategoriesBase">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="FlightsBase">
+              <PropertyRef Name="Category_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_SceduleBase_dbo_FlightsBase_Flight_ID">
+          <End Role="FlightsBase" Type="Self.FlightsBase" Multiplicity="0..1" />
+          <End Role="SceduleBase" Type="Self.SceduleBase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FlightsBase">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SceduleBase">
+              <PropertyRef Name="Flight_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DataBaseLabEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
+          <EntitySet Name="ActualFlightsBase" EntityType="Self.ActualFlightsBase" />
+          <EntitySet Name="AircraftsBase" EntityType="Self.AircraftsBase" />
+          <EntitySet Name="AircraftTypesBase" EntityType="Self.AircraftTypesBase" />
+          <EntitySet Name="ArivalAirportsBase" EntityType="Self.ArivalAirportsBase" />
+          <EntitySet Name="BrigadesBase" EntityType="Self.BrigadesBase" />
+          <EntitySet Name="ChildsBase" EntityType="Self.ChildsBase" />
+          <EntitySet Name="DepartmentsBase" EntityType="Self.DepartmentsBase" />
+          <EntitySet Name="EmployeesBase" EntityType="Self.EmployeesBase" />
+          <EntitySet Name="FlightCategoriesBase" EntityType="Self.FlightCategoriesBase" />
+          <EntitySet Name="FlightsBase" EntityType="Self.FlightsBase" />
+          <EntitySet Name="FlightStatusesBase" EntityType="Self.FlightStatusesBase" />
+          <EntitySet Name="MedicalChecksBase" EntityType="Self.MedicalChecksBase" />
+          <EntitySet Name="PositionsBase" EntityType="Self.PositionsBase" />
+          <EntitySet Name="SceduleBase" EntityType="Self.SceduleBase" />
+          <EntitySet Name="TechChecksBase" EntityType="Self.TechChecksBase" />
+          <AssociationSet Name="FK_dbo_ActualFlightsBase_dbo_AircraftsBase_Aircraft_ID" Association="Self.FK_dbo_ActualFlightsBase_dbo_AircraftsBase_Aircraft_ID">
+            <End Role="AircraftsBase" EntitySet="AircraftsBase" />
+            <End Role="ActualFlightsBase" EntitySet="ActualFlightsBase" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ActualFlightsBase_dbo_FlightsBase_Flight_ID" Association="Self.FK_dbo_ActualFlightsBase_dbo_FlightsBase_Flight_ID">
+            <End Role="FlightsBase" EntitySet="FlightsBase" />
+            <End Role="ActualFlightsBase" EntitySet="ActualFlightsBase" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ActualFlightsBase_dbo_FlightStatusesBase_FlightStatus_ID" Association="Self.FK_dbo_ActualFlightsBase_dbo_FlightStatusesBase_FlightStatus_ID">
+            <End Role="FlightStatusesBase" EntitySet="FlightStatusesBase" />
+            <End Role="ActualFlightsBase" EntitySet="ActualFlightsBase" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AircraftsBase_dbo_AircraftTypesBase_AircraftType_ID" Association="Self.FK_dbo_AircraftsBase_dbo_AircraftTypesBase_AircraftType_ID">
+            <End Role="AircraftTypesBase" EntitySet="AircraftTypesBase" />
+            <End Role="AircraftsBase" EntitySet="AircraftsBase" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AircraftsBase_dbo_TechChecksBase_TechCheck_ID" Association="Self.FK_dbo_AircraftsBase_dbo_TechChecksBase_TechCheck_ID">
+            <End Role="TechChecksBase" EntitySet="TechChecksBase" />
+            <End Role="AircraftsBase" EntitySet="AircraftsBase" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_SceduleBase_dbo_AircraftTypesBase_AircraftType_ID" Association="Self.FK_dbo_SceduleBase_dbo_AircraftTypesBase_AircraftType_ID">
+            <End Role="AircraftTypesBase" EntitySet="AircraftTypesBase" />
+            <End Role="SceduleBase" EntitySet="SceduleBase" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_FlightsBase_dbo_ArivalAirportsBase_Route_ID" Association="Self.FK_dbo_FlightsBase_dbo_ArivalAirportsBase_Route_ID">
+            <End Role="ArivalAirportsBase" EntitySet="ArivalAirportsBase" />
+            <End Role="FlightsBase" EntitySet="FlightsBase" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_EmployeesBase_dbo_BrigadesBase_Brigade_ID" Association="Self.FK_dbo_EmployeesBase_dbo_BrigadesBase_Brigade_ID">
+            <End Role="BrigadesBase" EntitySet="BrigadesBase" />
+            <End Role="EmployeesBase" EntitySet="EmployeesBase" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ChildsBase_dbo_EmployeesBase_ParentRefId" Association="Self.FK_dbo_ChildsBase_dbo_EmployeesBase_ParentRefId">
+            <End Role="EmployeesBase" EntitySet="EmployeesBase" />
+            <End Role="ChildsBase" EntitySet="ChildsBase" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_DepartmentsBase_dbo_EmployeesBase_Chief_ID" Association="Self.FK_dbo_DepartmentsBase_dbo_EmployeesBase_Chief_ID">
+            <End Role="EmployeesBase" EntitySet="EmployeesBase" />
+            <End Role="DepartmentsBase" EntitySet="DepartmentsBase" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_EmployeesBase_dbo_DepartmentsBase_DepartmentRefId" Association="Self.FK_dbo_EmployeesBase_dbo_DepartmentsBase_DepartmentRefId">
+            <End Role="DepartmentsBase" EntitySet="DepartmentsBase" />
+            <End Role="EmployeesBase" EntitySet="EmployeesBase" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_EmployeesBase_dbo_PositionsBase_Position_ID" Association="Self.FK_dbo_EmployeesBase_dbo_PositionsBase_Position_ID">
+            <End Role="PositionsBase" EntitySet="PositionsBase" />
+            <End Role="EmployeesBase" EntitySet="EmployeesBase" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_MedicalChecksBase_dbo_EmployeesBase_Employee_ID" Association="Self.FK_dbo_MedicalChecksBase_dbo_EmployeesBase_Employee_ID">
+            <End Role="EmployeesBase" EntitySet="EmployeesBase" />
+            <End Role="MedicalChecksBase" EntitySet="MedicalChecksBase" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_FlightsBase_dbo_FlightCategoriesBase_Category_ID" Association="Self.FK_dbo_FlightsBase_dbo_FlightCategoriesBase_Category_ID">
+            <End Role="FlightCategoriesBase" EntitySet="FlightCategoriesBase" />
+            <End Role="FlightsBase" EntitySet="FlightsBase" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_SceduleBase_dbo_FlightsBase_Flight_ID" Association="Self.FK_dbo_SceduleBase_dbo_FlightsBase_Flight_ID">
+            <End Role="FlightsBase" EntitySet="FlightsBase" />
+            <End Role="SceduleBase" EntitySet="SceduleBase" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище DataBaseLabModelContainer" CdmEntityContainer="DataBaseLabEntities">
+          <EntitySetMapping Name="C__MigrationHistory">
+            <EntityTypeMapping TypeName="DataBaseLabModel.C__MigrationHistory">
+              <MappingFragment StoreEntitySet="__MigrationHistory">
+                <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+                <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ActualFlightsBase">
+            <EntityTypeMapping TypeName="DataBaseLabModel.ActualFlightsBase">
+              <MappingFragment StoreEntitySet="ActualFlightsBase">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="SeatsCount" ColumnName="SeatsCount" />
+                <ScalarProperty Name="TicketsSold" ColumnName="TicketsSold" />
+                <ScalarProperty Name="TicketsReturned" ColumnName="TicketsReturned" />
+                <ScalarProperty Name="DepartureDateTime" ColumnName="DepartureDateTime" />
+                <ScalarProperty Name="ArivalDateTime" ColumnName="ArivalDateTime" />
+                <ScalarProperty Name="Aircraft_ID" ColumnName="Aircraft_ID" />
+                <ScalarProperty Name="Flight_ID" ColumnName="Flight_ID" />
+                <ScalarProperty Name="FlightStatus_ID" ColumnName="FlightStatus_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AircraftsBase">
+            <EntityTypeMapping TypeName="DataBaseLabModel.AircraftsBase">
+              <MappingFragment StoreEntitySet="AircraftsBase">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NumberOfFlights" ColumnName="NumberOfFlights" />
+                <ScalarProperty Name="AircraftType_ID" ColumnName="AircraftType_ID" />
+                <ScalarProperty Name="TechCheck_ID" ColumnName="TechCheck_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AircraftTypesBase">
+            <EntityTypeMapping TypeName="DataBaseLabModel.AircraftTypesBase">
+              <MappingFragment StoreEntitySet="AircraftTypesBase">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ArivalAirportsBase">
+            <EntityTypeMapping TypeName="DataBaseLabModel.ArivalAirportsBase">
+              <MappingFragment StoreEntitySet="ArivalAirportsBase">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="Town" ColumnName="Town" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BrigadesBase">
+            <EntityTypeMapping TypeName="DataBaseLabModel.BrigadesBase">
+              <MappingFragment StoreEntitySet="BrigadesBase">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ChildsBase">
+            <EntityTypeMapping TypeName="DataBaseLabModel.ChildsBase">
+              <MappingFragment StoreEntitySet="ChildsBase">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="SurName" ColumnName="SurName" />
+                <ScalarProperty Name="ParentRefId" ColumnName="ParentRefId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DepartmentsBase">
+            <EntityTypeMapping TypeName="DataBaseLabModel.DepartmentsBase">
+              <MappingFragment StoreEntitySet="DepartmentsBase">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Chief_ID" ColumnName="Chief_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmployeesBase">
+            <EntityTypeMapping TypeName="DataBaseLabModel.EmployeesBase">
+              <MappingFragment StoreEntitySet="EmployeesBase">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DepartmentRefId" ColumnName="DepartmentRefId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="HireDate" ColumnName="HireDate" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="Salary" ColumnName="Salary" />
+                <ScalarProperty Name="Brigade_ID" ColumnName="Brigade_ID" />
+                <ScalarProperty Name="Position_ID" ColumnName="Position_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FlightCategoriesBase">
+            <EntityTypeMapping TypeName="DataBaseLabModel.FlightCategoriesBase">
+              <MappingFragment StoreEntitySet="FlightCategoriesBase">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FlightsBase">
+            <EntityTypeMapping TypeName="DataBaseLabModel.FlightsBase">
+              <MappingFragment StoreEntitySet="FlightsBase">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="PassengersCount" ColumnName="PassengersCount" />
+                <ScalarProperty Name="Category_ID" ColumnName="Category_ID" />
+                <ScalarProperty Name="Route_ID" ColumnName="Route_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FlightStatusesBase">
+            <EntityTypeMapping TypeName="DataBaseLabModel.FlightStatusesBase">
+              <MappingFragment StoreEntitySet="FlightStatusesBase">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MedicalChecksBase">
+            <EntityTypeMapping TypeName="DataBaseLabModel.MedicalChecksBase">
+              <MappingFragment StoreEntitySet="MedicalChecksBase">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Valid" ColumnName="Valid" />
+                <ScalarProperty Name="Employee_ID" ColumnName="Employee_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PositionsBase">
+            <EntityTypeMapping TypeName="DataBaseLabModel.PositionsBase">
+              <MappingFragment StoreEntitySet="PositionsBase">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="MedicCheckPeriod" ColumnName="MedicCheckPeriod" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SceduleBase">
+            <EntityTypeMapping TypeName="DataBaseLabModel.SceduleBase">
+              <MappingFragment StoreEntitySet="SceduleBase">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DepartureDateTime" ColumnName="DepartureDateTime" />
+                <ScalarProperty Name="ArivalDateTime" ColumnName="ArivalDateTime" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="AircraftType_ID" ColumnName="AircraftType_ID" />
+                <ScalarProperty Name="Flight_ID" ColumnName="Flight_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TechChecksBase">
+            <EntityTypeMapping TypeName="DataBaseLabModel.TechChecksBase">
+              <MappingFragment StoreEntitySet="TechChecksBase">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="MustBeFixed" ColumnName="MustBeFixed" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
