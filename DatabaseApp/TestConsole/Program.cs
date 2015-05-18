@@ -38,9 +38,9 @@ namespace TestConsole
             this.context = new BaseContext();
             context.Database.Delete();
             context.SaveChanges();
-            //Console.WriteLine("The Data Base was Dropped");
-            //AddDataToDataBase();
-            //Console.WriteLine("Data added");
+            Console.WriteLine("The Data Base was Dropped");
+            AddDataToDataBase();
+            Console.WriteLine("Data added");
 
             //FirstEmployeesRequests req = new FirstEmployeesRequests();
             //Console.WriteLine("Получить список и общее число всех pаботников аэpопоpта");

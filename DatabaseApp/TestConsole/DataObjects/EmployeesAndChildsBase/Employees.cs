@@ -12,6 +12,7 @@ namespace DataBaseLab.DataObjects
     {
         [Key]
         public long ID { get; set; }
+
         public Positions Position { get; set; }
         public long DepartmentRefId { get; set; }
         [ForeignKey("ParentRefId")]
