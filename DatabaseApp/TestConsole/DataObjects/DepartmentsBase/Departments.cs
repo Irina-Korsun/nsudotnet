@@ -12,8 +12,14 @@ namespace DataBaseLab.DataObjects
     {
         [Key]
         public long ID { get; set; }
+        public string URI { get; set; }
         public string Name { get; set; }
         public Employees Chief { get; set; }
         public List<Employees> Employees { get; set; }
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,6 +11,9 @@ namespace DataBaseLab.DataObjects
     [Table("EmployeesBase")]
     public class Employees
     {
+        public Employees(){
+            HireDate = DateTime.Now;
+        }
         [Key]
         public long ID { get; set; }
 
@@ -23,9 +27,17 @@ namespace DataBaseLab.DataObjects
         public bool Sex { get; set; }
         public DateTime BirthDate { get; set; }
         public int Salary { get; set; }
+
         public List<Childs> Children { get; set; }
         public Brigades Brigade { get; set; }
 
-  
+        public override string ToString()
+        {
+            return Name;
+        }
+        //public void SetPosition(DataColumn column)
+        //{
+        //    column.ExtendedProperties.Add("Position", Position.ToString());
+        //}
     }
 }

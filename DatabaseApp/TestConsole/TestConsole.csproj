@@ -89,6 +89,15 @@
     <Compile Include="DataObjects\TechChecksBase\TechChecksAdding.cs" />
     <Compile Include="DropAndAdd.cs" />
     <Compile Include="MainSystem\BaseContext.cs" />
+    <Compile Include="Migrations\201505241209320_InitialCreate.cs" />
+    <Compile Include="Migrations\201505241209320_InitialCreate.Designer.cs">
+      <DependentUpon>201505241209320_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201505241213551_URI.cs" />
+    <Compile Include="Migrations\201505241213551_URI.Designer.cs">
+      <DependentUpon>201505241213551_URI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sql\FirstEmployeesRequests.cs" />
@@ -102,7 +111,14 @@
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201505241209320_InitialCreate.resx">
+      <DependentUpon>201505241209320_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201505241213551_URI.resx">
+      <DependentUpon>201505241213551_URI.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -42,19 +42,19 @@ namespace TestConsole
             AddDataToDataBase();
             Console.WriteLine("Data added");
 
-            //FirstEmployeesRequests req = new FirstEmployeesRequests();
-            //Console.WriteLine("Получить список и общее число всех pаботников аэpопоpта");
-            //req.EmployeesListRequest();
-            //Console.WriteLine();
-            //Console.WriteLine("Получить список и общее число всех начальников отделов");
-            //req.ChiefListRequest();
-            //Console.WriteLine();
-            //Console.WriteLine("Получить список и число pаботников указанного отдела");
-            //Console.WriteLine("Введите название отдела из списка:");
-            //req.DepartmentListRequest();
-            //string department = Console.ReadLine();
-            //req.EmployeesOfDepartmentRequest(department);
-            //Console.ReadKey();
+            FirstEmployeesRequests req = new FirstEmployeesRequests();
+            Console.WriteLine("Получить список и общее число всех pаботников аэpопоpта");
+            req.EmployeesListRequest();
+            Console.WriteLine();
+            Console.WriteLine("Получить список и общее число всех начальников отделов");
+            req.ChiefListRequest();
+            Console.WriteLine();
+            Console.WriteLine("Получить список и число pаботников указанного отдела");
+            Console.WriteLine("Введите название отдела из списка:");
+            req.DepartmentListRequest();
+            string department = Console.ReadLine();
+            req.EmployeesOfDepartmentRequest(department);
+            Console.ReadKey();
         }
         public void AddDataToDataBase()
         {

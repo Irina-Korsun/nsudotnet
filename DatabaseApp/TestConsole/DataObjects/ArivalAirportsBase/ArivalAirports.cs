@@ -15,5 +15,6 @@ namespace DataBaseLab.DataObjects
         public string Name { get; set; }
         public string Country { get; set; }
         public string Town { get; set; }
+        public string Street { get; set; }
     }
 }

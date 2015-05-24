@@ -14,5 +14,9 @@ namespace DataBaseLab.DataObjects
         public long ID { get; set; }
         public string Name { get; set; }
         public int MedicCheckPeriod { get; set; }
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }
