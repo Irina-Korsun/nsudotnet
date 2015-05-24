@@ -111,9 +111,11 @@
     <Compile Include="ChildsBase.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="ComboboxItem.cs" />
     <Compile Include="C__MigrationHistory.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data.cs" />
     <Compile Include="DepartmentsBase.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -129,8 +131,6 @@
     <Compile Include="FlightStatusesBase.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Ins.cs" />
-    <Compile Include="Ins_2.cs" />
     <Compile Include="MedicalChecksBase.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
