@@ -13,6 +13,7 @@ namespace DataBaseLab.DataObjects
     {
         public Employees(){
             HireDate = DateTime.Now;
+            BirthDate = DateTime.Now;
         }
         [Key]
         public long ID { get; set; }

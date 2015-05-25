@@ -1,0 +1,29 @@
+﻿<Window x:Class="WpfFormsAndTables.AddDepWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+         xmlns:local="clr-namespace:WpfFormsAndTables"
+        Title="AddingWindow" Height="302" Width="528">
+    <Window.DataContext>
+        <local:MyViewModel/>
+    </Window.DataContext>
+    <Grid Margin="0,0,0,1">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="25"/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <TextBox x:Name="Name" Grid.Column="0" Grid.Row="1" Margin="19,5,10,204" Grid.ColumnSpan="2" Text="{Binding Path = Name, Mode=TwoWay}" TextChanged="EventName_TextChanged" />
+        <TextBox x:Name="Employee" Grid.Column="2" Grid.Row="1" Margin="30,5,98,204" Grid.ColumnSpan="2" Text="{Binding Path = Employee, Mode=TwoWay}" TextChanged="EventEmployee_TextChanged" />
+        <Button Grid.Row="1" Margin="61,69,66,146" Content="Добавить" Grid.ColumnSpan="2" Grid.Column="3" Click="Button_Click_1" />
+        <TextBox x:Name="Chief" Grid.Column="3" Grid.Row="1" Margin="61,5,67,204" Grid.ColumnSpan="2" Text="{Binding Path = Chief, Mode=TwoWay}" TextChanged="EventChief_TextChanged"/>
+        <Label Grid.ColumnSpan="2" Content="Department name" HorizontalAlignment="Left" Height="25" Margin="19,0,0,0" VerticalAlignment="Top" Width="120"/>
+        <Label Grid.ColumnSpan="2" Content="Employee name" HorizontalAlignment="Left" Height="25" Margin="30,0,0,0" VerticalAlignment="Top" Width="120" Grid.Column="2"/>
+        <Label Grid.ColumnSpan="2" Content="Chief name" HorizontalAlignment="Left" Height="25" Margin="61,0,0,0" VerticalAlignment="Top" Width="120" Grid.Column="3"/>
+    </Grid>
+</Window>

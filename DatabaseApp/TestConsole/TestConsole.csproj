@@ -65,8 +65,8 @@
     <Compile Include="DataObjects\AircraftsBase\AircraftsAdding.cs" />
     <Compile Include="DataObjects\AircraftTypesBase\AircraftTypes.cs" />
     <Compile Include="DataObjects\AircraftTypesBase\AircraftTypesAdding.cs" />
-    <Compile Include="DataObjects\ArivalAirportsBase\ArivalAirports.cs" />
-    <Compile Include="DataObjects\ArivalAirportsBase\ArivalAirportsAdding.cs" />
+    <Compile Include="Properties\ArivalAirportsBase\ArivalAirports.cs" />
+    <Compile Include="Properties\ArivalAirportsBase\ArivalAirportsAdding.cs" />
     <Compile Include="DataObjects\BrigadesBase\Brigades.cs" />
     <Compile Include="DataObjects\BrigadesBase\BrigadesAdding.cs" />
     <Compile Include="DataObjects\DepartmentsBase\DepartmentsAdding.cs" />
@@ -74,8 +74,8 @@
     <Compile Include="DataObjects\DepartmentsBase\Departments.cs" />
     <Compile Include="DataObjects\EmployeesAndChildsBase\Employees.cs" />
     <Compile Include="DataObjects\EmployeesAndChildsBase\EmployeesAndChildrensAdding.cs" />
-    <Compile Include="DataObjects\FlightCategoriesBase\FlightCategories.cs" />
-    <Compile Include="DataObjects\FlightCategoriesBase\FlightCategoriesAdding.cs" />
+    <Compile Include="DataObjects\TechChecksBase\FlightCategoriesBase\FlightCategories.cs" />
+    <Compile Include="DataObjects\TechChecksBase\FlightCategoriesBase\FlightCategoriesAdding.cs" />
     <Compile Include="DataObjects\FlightsBase\FlightAdding.cs" />
     <Compile Include="DataObjects\FlightStatusesBase\FlightStatusesAdding.cs" />
     <Compile Include="DataObjects\FlightsBase\Flights.cs" />

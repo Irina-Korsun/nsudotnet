@@ -1,0 +1,24 @@
+﻿<Window x:Class="WpfFormsAndTables.DelDepWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+         xmlns:local="clr-namespace:WpfFormsAndTables"
+        Title="DelDepWindow" Height="308.956" Width="546.27">
+    <Window.DataContext>
+        <local:MyViewModel/>
+    </Window.DataContext>
+    <Grid Margin="0,0,2,2">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="25"/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <TextBox x:Name="Name" Grid.Row="1" Margin="77,60,85,142" Grid.ColumnSpan="3" Text="{Binding Path = Name, Mode=TwoWay}" TextChanged="EventName_TextChanged" />
+        <Button Grid.Row="1" Margin="105,60,107,142" Content="Удалить" Grid.Column="2" Click="Button_Click_1" Grid.ColumnSpan="3" />
+    </Grid>
+</Window>
